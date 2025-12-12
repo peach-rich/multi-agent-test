@@ -1,1 +1,22 @@
-Hello
+Advent of Code workspace
+
+## Structure
+- aoc/            Python package with solutions + runner
+- aoc/years/      Year packages (e.g. aoc/years/y2025/day01.py)
+- inputs/         Your puzzle inputs (ignored by git)
+- scripts/        Small helper scripts
+- tests/          stdlib unittest tests
+
+## Usage
+Create a new day scaffold:
+- python scripts/aoc_new.py 2025 2
+
+Run a solution (defaults to inputs/<year>/dayDD.txt):
+- python -m aoc 2025 1 --part 1
+- python -m aoc 2025 1 --part 2
+
+Run using stdin:
+- cat some_input.txt | python -m aoc 2025 1 --part 1 --input -
+
+Run tests:
+- python -m unittest discover -s tests
