@@ -3,20 +3,61 @@ Advent of Code workspace
 ## Structure
 - aoc/            Python package with solutions + runner
 - aoc/years/      Year packages (e.g. aoc/years/y2025/day01.py)
+- aoc/utils.py    Common helper functions for AoC puzzles
 - inputs/         Your puzzle inputs (ignored by git)
 - scripts/        Small helper scripts
 - tests/          stdlib unittest tests
 
 ## Usage
-Create a new day scaffold:
-- python scripts/aoc_new.py 2025 2
 
-Run a solution (defaults to inputs/<year>/dayDD.txt):
-- python -m aoc 2025 1 --part 1
-- python -m aoc 2025 1 --part 2
+### Create a new day scaffold
+Creates day module, input file, and test file:
+```bash
+python scripts/aoc_new.py 2025 2
+```
 
-Run using stdin:
-- cat some_input.txt | python -m aoc 2025 1 --part 1 --input -
+### Run solutions
+Run both parts (default):
+```bash
+python -m aoc 2025 1
+```
 
-Run tests:
-- python -m unittest discover -s tests
+Run a specific part:
+```bash
+python -m aoc 2025 1 --part 1
+python -m aoc 2025 1 --part 2
+```
+
+Show execution time:
+```bash
+python -m aoc 2025 1 --time
+```
+
+Use custom input file:
+```bash
+python -m aoc 2025 1 --input path/to/input.txt
+```
+
+Read from stdin:
+```bash
+cat some_input.txt | python -m aoc 2025 1 --input -
+```
+
+### Run tests
+```bash
+python -m unittest discover -s tests
+```
+
+## Utility Functions
+
+The `aoc.utils` module provides common helpers:
+- `lines(text)` - Split into non-empty lines
+- `ints(text)` - Parse one integer per line
+- `extract_ints(text)` - Extract all integers from text using regex
+- `chunks(text)` - Split on blank lines
+- `sliding_window(seq, n)` - Generate sliding windows
+- `grid(text)` - Parse text into 2D grid
+- `neighbors_4(row, col)` - Get 4-directional neighbors
+- `neighbors_8(row, col)` - Get 8-directional neighbors (including diagonals)
+- `in_bounds(grid, row, col)` - Check if position is in bounds
+- `manhattan_distance(pos1, pos2)` - Calculate Manhattan distance
